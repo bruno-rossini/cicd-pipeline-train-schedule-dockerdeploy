@@ -14,7 +14,6 @@ pipeline {
             }
             steps {
                 sh 'docker build us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule .'
-                }
             }
         }
         stage('Push Docker Image') {
@@ -23,7 +22,6 @@ pipeline {
             }
             steps {
                 sh 'docker push us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule'
-                }
             }
         }
     }   
