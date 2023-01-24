@@ -13,11 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                script {
-                    app = docker.build("<DOCKER_HUB_USERNAME>/train-schedule")
-                    app.inside {
-                        sh 'echo $(curl localhost:8080)'
-                    }
+                sh 'docker build us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule .'
                 }
             }
         }
@@ -26,11 +22,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
-                    }
+                sh 'docker push us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule'
                 }
             }
         }
