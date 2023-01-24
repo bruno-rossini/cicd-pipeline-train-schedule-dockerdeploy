@@ -13,7 +13,10 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'docker build us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule'
+                sh 'pwd'
+                sh 'ls -l'
+//                sh 'docker build us-central1-docker.pkg.dev/indigo-syntax-375116/acg/train-schedule'
+                sh 'docker build .'
             }
         }
         stage('Push Docker Image') {
